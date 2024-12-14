@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр данных базы</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7fa;
+            text-align: center;
+        }
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Стили для таблицы */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #add8e6;
+            color: black;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f1f1f1;
+        }
+
+        /* Стили для пустых значений */
+        .empty {
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Кнопка для обновления */
+        .update-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .update-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Данные базы</h1>
+
+    <!-- Кнопка для обновления данных -->
+    <form action="/" method="get">
+        <button type="submit" class="update-button">Вернуться на главную страницу</button>
+    </form>
+
+    <!-- Таблица данных -->
+    <table>
+        <thead>
+            <tr>
+                <th>Название программы</th>
+                <th>Модуль 1</th>
+                <th>Модуль 2</th>
+                <th>Модуль 3</th>
+                <th>Модуль (связанный)</th>
+                <th>Язык модуля</th>
+                <th>Строки кода</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.program_name }}</td>
+                    <td>{{ row.module_1 }}</td>
+                    <td>{{ row.module_2 }}</td>
+                    <td>{{ row.module_3 }}</td>
+                    <td>{% if row.module_name %}{{ row.module_name }}{% else %}<span class='empty'>Нет связи</span>{% endif %}</td>
+                    <td>{% if row.module_language %}{{ row.module_language }}{% else %}<span class='empty'>Не указано</span>{% endif %}</td>
+                    <td>{% if row.module_lines %}{{ row.module_lines }}{% else %}<span class='empty'>Не указано</span>{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

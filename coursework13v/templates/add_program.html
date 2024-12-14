@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление программы</title>
+    <body>
+        <img src = "static/addprogram.jpg" width=100% height=100% style="position: absolute;z-index: -1;"
+    </body>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7fa;
+            display: flex;
+            justify-content: flex-start; /* Сдвигаем контент влево */
+            align-items: flex-start;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        h2, h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Стили для формы */
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: block;
+            text-align: left;
+            max-width: 500px; /* Устанавливаем максимальную ширину */
+            width: 100%;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 12px;  /* Сделаем поля более широкими */
+            margin-bottom: 20px; /* Увеличим расстояние между полями */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Стили для сообщения */
+        .message {
+            font-size: 16px;
+            color: #4CAF50;
+            margin-top: 20px;
+        }
+
+        /* Ссылка на главную страницу */
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Кнопка возврата */
+        .back-button {
+            display: inline-block;
+            padding: 10px 10px;
+            background-color: #007BFF;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+    <!-- Подключаем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<!-- Кнопка возврата на главную страницу с иконкой стрелки -->
+<a href="/" class="back-button"><i class="fas fa-arrow-left"></i></a>
+
+<form action="/add_program" method="post">
+    <label for="name_program">Название программы:</label>
+    <input type="text" id="name_program" name="name_program" required><br>
+
+    <label for="module_1">Модуль 1:</label>
+    <input type="text" id="module_1" name="module_1"><br>
+
+    <label for="module_2">Модуль 2:</label>
+    <input type="text" id="module_2" name="module_2"><br>
+
+    <label for="module_3">Модуль 3:</label>
+    <input type="text" id="module_3" name="module_3"><br>
+
+    <input type="submit" value="Добавить программу">
+</form>
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+</body>
+</html>
